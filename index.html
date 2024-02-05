@@ -1,0 +1,60 @@
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>TGT</title>
+  <link href="style.css" rel="stylesheet">
+ </head>
+ <body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script lang="javascript" src="./lib/xlsx.core.min.js"></script>
+<script lang="javascript" src="./lib/xlsx.full.min.js"></script>
+<script lang="javascript" src="./lib/FileSaver.js"></script>
+<script>
+  function handleFileSelect(evt) {
+    var files = evt.target.files; // FileList object
+    var xl2json = new ExcelToJSON();
+    xl2json.parseExcel(files[0]);
+  }
+</script>
+<header>
+  <div class="logo"></div>
+</header>
+<main>
+  <div class="instructions">
+    <div class="inner-block">
+      <h3>Проверка цены перед загрузкой на WB</h3>
+
+  </div>
+  <div class="button"> 
+    <form  enctype="multipart/form-data">
+      <input  class="input_file" id="upload" type=file  name="files[]">
+  </form>
+  <input class="execute" type="button" onclick="execute()" value="Обработать">
+</div>
+</div>
+<div class="textarea">
+  <div>
+    <p>Цена ниже себестоимости</p>
+    <textarea name="lowPrice" id="lowPrice" cols="20" rows="30"></textarea>
+  </div>
+  <div>
+    <p>Не заполнена цена</p>
+    <textarea name="noPrice" id="noPrice" cols="20" rows="30"></textarea>
+  </div>
+
+
+
+
+  </main>
+  
+  
+  
+
+    
+    
+    <script>
+        document.getElementById('upload').addEventListener('change', handleFileSelect, false);
+    </script>
+<script type="text/javascript" src = "./js/script.js" defer></script>
+ </body>
+</html>
