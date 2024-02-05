@@ -7,6 +7,7 @@ let noPrice = [];
 let minPriceObj = [];
 
 const execute = () => {
+
   calcPriceWB();
   pushLowPrice();
   printLowPrice();
@@ -98,16 +99,12 @@ const findArt = () => {
         if(Object.values(priceWB[i])['2'] == minPriciGoogleSheet.values[j][0]) {
           //формула расчета
           priceWB[i]['Продаем в минус'] = (priceWB[i]['Цена со скидкой'] - minPriciGoogleSheet.values[j][1])
-          
+          break
         } 
-          
-        
-        
         //если не указана цена пишет НЕТ ЦЕНЫ ВХОДА
-          
-          
+        priceWB[i]['Продаем в минус'] = 'НЕТ ЦЕНЫ ВХОДА';
       }
-      //priceWB[i]['Продаем в минус'] = 'НЕТ ЦЕНЫ ВХОДА';
+     
   }
 
 }
@@ -120,7 +117,7 @@ const pushLowPrice = () => {
     } 
     if (priceWB[i]['Продаем в минус'] > 1) {
       okPrice.push(priceWB[i])
-    } else {
+    } if (priceWB[i]['Продаем в минус'] == 'НЕТ ЦЕНЫ ВХОДА') {
       noPrice.push(priceWB[i])
     }
   }
